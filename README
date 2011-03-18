@@ -4,4 +4,4 @@ Example of uses:
 
 To get a category ID based on a URL segment:
 
-`{exp:swanify_category:get category_url="{segment_2}"}`
+{exp:swanify_category:get category_url="{segment_2}"}
