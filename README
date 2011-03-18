@@ -1,0 +1,7 @@
+This is a very simple plugin for ExpressionEngine 2.0 that allows you to get a category ID from a category URL, i didn't want to pay $10 for this type of plugin so i created this in 2 minutes.
+
+Example of uses:
+
+To get a category ID based on a URL segment:
+
+`{exp:swanify_category:get category_url="{segment_2}"}`
