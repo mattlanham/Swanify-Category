@@ -20,8 +20,15 @@
 		function get() 
 		{
 			$category_url = $this->EE->TMPL->fetch_param('category_url');
+			$group_id     = $this->EE->TMPL->fetch_param('group_id');
 			
-			$query = $this->EE->db->query("SELECT * FROM exp_categories WHERE cat_url_title = '".$category_url."' LIMIT 1");
+			$whereClause = "cat_url_title = '".$category_url."'";
+			
+			if(!empty($group_id)){
+				$whereClause .= "AND group_id = '".$group_id."'";
+			}
+			
+			$query = $this->EE->db->query("SELECT * FROM exp_categories WHERE ".$whereClause." LIMIT 1");
 			
 			if($query->num_rows() > 0)
 			{
