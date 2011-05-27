@@ -5,3 +5,7 @@ Example of uses:
 To get a category ID based on a URL segment:
 
 {exp:swanify_category:get category_url="{segment_2}"}
+
+Optional group_id parameter as category url_title is not unique. 
+
+{exp:swanify_category:get category_url="{segment_2}" group_id="3"}
