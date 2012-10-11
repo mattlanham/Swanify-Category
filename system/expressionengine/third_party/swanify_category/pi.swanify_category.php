@@ -2,7 +2,7 @@
 
 	$plugin_info = array(
 			     'pi_name' => 'Swanify Category',
-			     'pi_version' =>'0.1',
+			     'pi_version' =>'0.2',
 			     'pi_author' =>'Matthew Lanham',
 			     'pi_author_url' => 'http://www.swanify.com',
 			     'pi_description' => 'Returns category ID for given category URL',
@@ -11,7 +11,6 @@
 
 	class Swanify_category 
 	{
-		
 		function Swanify_category() 
 		{
 			$this->EE =& get_instance();
@@ -22,13 +21,13 @@
 			$category_url = $this->EE->TMPL->fetch_param('category_url');
 			$group_id     = $this->EE->TMPL->fetch_param('group_id');
 			
-			$whereClause = "cat_url_title = '".$category_url."'";
+			$whereClause = "cat_url_title = '".$this->EE->db->escape_str($category_url)."' ";
 			
 			if(!empty($group_id)){
-				$whereClause .= "AND group_id = '".$group_id."'";
+				$whereClause .= "AND group_id = '".$this->EE->db->escape_str($group_id)."' ";
 			}
-			
-			$query = $this->EE->db->query("SELECT * FROM exp_categories WHERE ".$whereClause." LIMIT 1");
+			$sql="SELECT * FROM exp_categories WHERE ".$whereClause." LIMIT 1";
+			$query = $this->EE->db->query($sql);
 			
 			if($query->num_rows() > 0)
 			{
@@ -47,4 +46,3 @@
 		
 	}
 	
-?>
